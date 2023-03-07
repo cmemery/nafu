@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <title>AoC Nafu</title>
+  <meta charset="utf-8">
+  <title>AoC Nafu</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <style>
+    .container {
+      display: grid;
+      margin:20px auto;
+      grid-gap:3px;
+      max-width:970px;
+      grid-template-columns: repeat(auto-fill, minmax(25px, 1fr));
+      grid-template-rows: repeat(auto-fill,320px);
+      row-gap: 3em;
+    }
+
+    .nafuda {
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+      border: 0px;
+      border-radius: .1em;
+      padding: 12px 0px 0px;
+      cursor: move;
+      width:23px;
+      height:300px;
+      font: bold 1.2em Arial;
+      box-shadow: 1px 1px 2px 1px #717A7F;
+      display:flex;
+      align-items:center;
+    }
+
+    .student {
+      background: url('img/wood.jpg') repeat-x 0 0 scroll, #d2b48c;
+    }
+
+    .dan {
+    background-color:#000;
+    color:#eee;
+    }
+
+    .kyu {
+      background-color:#fff;
+    }
+
+    #content {
+      text-align:center;
+      font-family: Arial, sans-serif;
+      max-width: 970px;
+      margin: 0px auto;
+      padding: 0px 30px;
+    }
+
+    p {
+      font-size:1.4em;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1>Nafudakake</h1>
+    <p>Our Dojo Rank Board showing lineage from Hombu Dojo, Tokyo, Japan to the United States Aikido
+      Federation Technical Commitee.</p>
+
+    <div id="nafu" class="container" />
+
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script id="member_data" type="application/javascript">
+      var members = {"data": [
+        {"rank": "dan", "label": "FOUNDER", "members": [
+          "M-UESHIBA"
+          ]},
+        {"rank": "dan", "label": "SECOND DOSHU", "members": ["" +
+          "K-UESHIBA"
+          ]},
+        {"rank": "dan", "label": "THIRD DOSHU", "members": [
+          "M-UESHIBA"
+          ]},
+        {"rank": "dan", "label": "WAKA SENSEI", "members": [
+          "M-UESHIBA"
+          ]},
+        {"rank": "dan", "label": "HACHIDAN", "members": [
+          "Y-YAMADA"
+          ]},
+        {"rank": "dan", "label": "NANADAN", "members": [
+          "A-DEMKO"
+          ]},
+        {"rank": "dan", "label": "ROKUDAN", "members": [
+          "D-MAIN"
+          ]},
+        {"rank": "dan", "label": "GODAN", "members": [
+          "J-WEINER"
+          ]},
+        {"rank": "dan", "label": "YONDAN", "members": [
+          "K-OZU","M-UMEMOTO"
+          ]},
+        {"rank": "dan", "label": "SANDAN", "members": [
+          "R-ROEMER","J-HYDE"
+          ]},
+        {"rank": "dan", "label": "NIDAN", "members": [
+          "S-BRANDON","E-HAPONIK","J-FREUND"
+          ]},
+        {"rank": "dan", "label": "SHODAN", "members": [
+          "T-KAMEI","R-PIERCE","S-SHERSTYUK","I-LORA","B-GOODROE", "M-LADENHEIM","J-PLUNKETT"
+          ]},
+        {"rank": "kyu", "label": "IKKYU", "members": [
+          "Z-BUTTAR", "M-MCGRINSON"
+          ]},
+        {"rank": "kyu", "label": "NIKYU", "members": [
+          "N-MAJOR", "R-ARREAZA"
+          ]},
+        {"rank": "kyu", "label": "SANKYU", "members": [
+          "N-MRIZA", "J-TUCKER", "D-LANTOS", "K-KEUHNE","L-JOHNSON","A-BUEHLER"
+          ]},
+        {"rank": "kyu", "label": "YONKYU", "members": [
+          "R-PRENTIS","C-BURGESS","M-CORRALES","M-GRANDE","K-CILLO"
+          ]},
+        {"rank": "kyu", "label": "GOKYU", "members": [
+          "L-ALLSOP", "K-STONE", "M-LOPEZ", "W-HARTSOCK","N-ALEXANDER",
+          "S-LIN","D-SHOOK","S-MILLER","N-MAHONEY","M-DINGEE"
+          ]},
+        {"rank": "kyu", "label": "ROKUKYU", "members": [
+          "A-ROJAS", "C-LOPEZ", "C-EMERY", "D-DAVIS","K-CORGAN"
+          ]},
+        {"rank": "kyu", "label": "MUKYU", "members": [
+          "J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH",
+          "J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH"
+          ]},
+        {"rank": "kyu", "label": "KIDS", "members": [
+          "J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH"
+          ]},
+        ]}
+
+
+      function renderHTML() {
+        members.data.forEach(function (item) {
+          var rankItem = document.createElement('div');
+          rankItem.draggable = true;
+          rankItem.id = item.rank;
+          rankItem.className = item.rank + " nafuda";
+          rankItem.innerText = item.label;
+          document.getElementById("nafu").appendChild(rankItem);
+          item.members.forEach(function (member) {
+            var memberItem = document.createElement('div');
+            memberItem.draggable = true;
+            memberItem.className = "nafuda student";
+            memberItem.innerText = member;
+            document.getElementById("nafu").appendChild(memberItem);
+          })
+        });
+      }
+      renderHTML();
+    </script>
+  </div>
+</body>
+
+</html>
