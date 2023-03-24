@@ -17,25 +17,27 @@
     <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/normalize.css">
   <style>
-    .container {
+
+    .nafu {
       display: grid;
-      margin:20px auto;
-      grid-gap:3px;
-      max-width:970px;
-      grid-template-columns: repeat(auto-fill, minmax(25px, 1fr));
-      grid-template-rows: repeat(auto-fill,320px);
-      row-gap: 3em;
-    }
+      margin:0px auto;
+      grid-gap:30px 4px;
+      max-width:1120px;
+      grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+      grid-template-rows: auto,300;
+       
+   }
 
     .nafuda {
       writing-mode: vertical-lr;
       text-orientation: upright;
       border: 0px;
       border-radius: .1em;
-      padding: 12px 0px 0px;
+      padding: 20px 0 0 0;
       cursor: move;
-      width:23px;
-      height:300px;
+			margin: 0px;
+      width:32px;
+      height:316px;
       font: bold 1.2em Arial;
       box-shadow: 1px 1px 2px 1px #717A7F;
       display:flex;
@@ -43,7 +45,11 @@
     }
 
     .student {
-      background: url('img/wood.jpg') repeat-x 0 0 scroll, #d2b48c;
+      background: url('/wp-content/uploads/2023/03/wood-e1679591242122.jpg') repeat-x 0 0 scroll, #d2b48c;
+    }
+    
+    .student.inmem {
+        background: linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0))0 80%/100% 10px no-repeat, url('/wp-content/uploads/2023/03/wood-e1679591242122.jpg');
     }
 
     .dan {
@@ -67,6 +73,9 @@
       font-size:1.4em;
     }
   </style>
+
+
+  
 </head>
 <body>
   <div id="content">
@@ -74,99 +83,283 @@
     <p>Our Dojo Rank Board showing lineage from Hombu Dojo, Tokyo, Japan to the United States Aikido
       Federation Technical Commitee.</p>
 
-    <div id="nafu" class="container" />
-
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
-    <script id="member_data" type="application/javascript">
-      var members = {"data": [
-        {"rank": "dan", "label": "FOUNDER", "members": [
-          "M-UESHIBA"
-          ]},
-        {"rank": "dan", "label": "SECOND DOSHU", "members": ["" +
-          "K-UESHIBA"
-          ]},
-        {"rank": "dan", "label": "THIRD DOSHU", "members": [
-          "M-UESHIBA"
-          ]},
-        {"rank": "dan", "label": "WAKA SENSEI", "members": [
-          "M-UESHIBA"
-          ]},
-        {"rank": "dan", "label": "HACHIDAN", "members": [
-          "Y-YAMADA"
-          ]},
-        {"rank": "dan", "label": "NANADAN", "members": [
-          "A-DEMKO"
-          ]},
-        {"rank": "dan", "label": "ROKUDAN", "members": [
-          "D-MAIN"
-          ]},
-        {"rank": "dan", "label": "GODAN", "members": [
-          "J-WEINER"
-          ]},
-        {"rank": "dan", "label": "YONDAN", "members": [
-          "K-OZU","M-UMEMOTO"
-          ]},
-        {"rank": "dan", "label": "SANDAN", "members": [
-          "R-ROEMER","J-HYDE"
-          ]},
-        {"rank": "dan", "label": "NIDAN", "members": [
-          "S-BRANDON","E-HAPONIK","J-FREUND"
-          ]},
-        {"rank": "dan", "label": "SHODAN", "members": [
-          "T-KAMEI","R-PIERCE","S-SHERSTYUK","I-LORA","B-GOODROE", "M-LADENHEIM","J-PLUNKETT"
-          ]},
-        {"rank": "kyu", "label": "IKKYU", "members": [
-          "Z-BUTTAR", "M-MCGRINSON"
-          ]},
-        {"rank": "kyu", "label": "NIKYU", "members": [
-          "N-MAJOR", "R-ARREAZA"
-          ]},
-        {"rank": "kyu", "label": "SANKYU", "members": [
-          "N-MRIZA", "J-TUCKER", "D-LANTOS", "K-KEUHNE","L-JOHNSON","A-BUEHLER"
-          ]},
-        {"rank": "kyu", "label": "YONKYU", "members": [
-          "R-PRENTIS","C-BURGESS","M-CORRALES","M-GRANDE","K-CILLO"
-          ]},
-        {"rank": "kyu", "label": "GOKYU", "members": [
-          "L-ALLSOP", "K-STONE", "M-LOPEZ", "W-HARTSOCK","N-ALEXANDER",
-          "S-LIN","D-SHOOK","S-MILLER","N-MAHONEY","M-DINGEE"
-          ]},
-        {"rank": "kyu", "label": "ROKUKYU", "members": [
-          "A-ROJAS", "C-LOPEZ", "C-EMERY", "D-DAVIS","K-CORGAN"
-          ]},
-        {"rank": "kyu", "label": "MUKYU", "members": [
-          "J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH",
-          "J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH"
-          ]},
-        {"rank": "kyu", "label": "KIDS", "members": [
-          "J-SMITH","J-SMITH","J-SMITH","J-SMITH","J-SMITH"
-          ]},
-        ]}
-
-
-      function renderHTML() {
-        members.data.forEach(function (item) {
-          var rankItem = document.createElement('div');
-          rankItem.draggable = true;
-          rankItem.id = item.rank;
-          rankItem.className = item.rank + " nafuda";
-          rankItem.innerText = item.label;
-          document.getElementById("nafu").appendChild(rankItem);
-          item.members.forEach(function (member) {
-            var memberItem = document.createElement('div');
-            memberItem.draggable = true;
-            memberItem.className = "nafuda student";
-            memberItem.innerText = member;
-            document.getElementById("nafu").appendChild(memberItem);
-          })
-        });
+      <div id="nafu" class="nafu"></div>
+      <script id="member_data" type="application/javascript">
+        function renderHTML() {
+        const nafu_data = [
+        {
+          "rank": "dan",
+          "label": "FOUNDER",
+          "members": [
+            "M-UESHIBA"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "SECOND DOSHU",
+          "members": [
+            "K-UESHIBA"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "THIRD DOSHU",
+          "members": [
+            "M-UESHIBA"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "WAKA SENSEI",
+          "members": [
+            "M-UESHIBA"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "HACHIDAN",
+          "members": [
+            "Y-YAMADA"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "NANADAN",
+          "members": [
+            "A-DEMKO"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "ROKUDAN",
+          "members": [
+            "D-MAIN"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "GODAN",
+          "members": [
+            "J-WEINER"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "YONDAN",
+          "members": [
+            "K-OZU",
+            "M-UMEMOTO"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "SANDAN",
+          "members": [
+            "R-ROEMER",
+            "J-HYDE"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "NIDAN",
+          "members": [
+            "S-BRANDON",
+            "E-HAPONIK",
+            "J-FREUND"
+          ]
+        },
+        {
+          "rank": "dan",
+          "label": "SHODAN",
+          "members": [
+            "T-KAMEI",
+            "R-PIERCE",
+            "S-SHERSTYUK",
+            "I-LORA",
+            "B-GOODROE",
+            "M-LADENHEIM",
+            "J-PLUNKETT"
+          ]
+        },
+        {
+          "rank": "kyu",
+          "label": "IKKYU",
+          "members": [
+            "Z-BUTTAR",
+            "M-MCGRINSON"
+          ]
+        },
+        {
+          "rank": "kyu",
+          "label": "NIKYU",
+          "members": [
+            "R-ARREAZA",
+            "N-MAJOR"
+          ]
+        },
+        {
+          "rank": "kyu",
+          "label": "SANKYU",
+          "members": [
+            "N-MRIZA",
+            "J-TUCKER",
+            "D-LANTOS",
+            "K-KEUHNE",
+            "L-JOHNSON",
+            "A-BUEHLER"
+          ]
+        },
+        {
+          "rank": "kyu",
+          "label": "YONKYU",
+          "members": [
+            "R-PRENTIS",
+            "C-BURGESS",
+            "M-CORRALES",
+            "M-GRANDE",
+            "K-CILLO"
+          ]
+        },
+        {
+          "rank": "kyu",
+          "label": "GOKYU",
+          "members": [
+            "L-ALLSOP",
+            "K-STONE",
+            "M-LOPEZ",
+            "W-HARTSOCK",
+            "N-ALEXANDER",
+            "S-LIN",
+            "D-SHOOK",
+            "S-MILLER",
+            "N-MAHONEY",
+            "M-DINGEE"
+          ]
+        },
+        {
+          "rank": "kyu",
+          "label": "ROKUKYU",
+          "members": [
+            "L-COWAN",
+            "T-STAIRWALT",
+            "K-WINNEN",
+            "N-WILLIAMS",
+            "J-BLISS",
+            "H-WHEELER",
+            "R-GREENE",
+            "R-MCENTIRE",
+            "J-CHACKO",
+            "A-RILES",
+            "R-RILES",
+            "M-SUAREZ",
+            "C-ROADCAP",
+            "J-PRESCOTT",
+            "T-YAMAYA",
+            "A-JAROSH",
+            "C-SMITH",
+            "F-HUFNAGEL",
+            "J-MADDOCKS",
+            "M-BURKE",
+            "J-BAULCH",
+            "J-RUFFING",
+            "J-STARNES",
+            "J-FELICE",
+            "M-ATIEMO",
+            "B-RICE",
+            "A-RICE",
+            "E-BOMIRETO",
+            "A-ROJAS",
+            "C-LOPEZ",
+            "C-EMERY",
+            "D-DAVIS",
+            "K-CORGAN"
+          ]
+        },
+        {
+          "rank": "kyu",
+          "label": "MUKYU",
+          "members": [
+            "M-BROWNING",
+            "B-PARRISH",
+            "A-WRIGHT",
+            "J-HILKER",
+            "G-KNIGHT",
+            "S-WOOD",
+            "L-BLISS",
+            "J-CROMER",
+            "W-CHAD",
+            "L-LANTOS",
+            "P-CAPIN",
+            "C-TARRY",
+            "R-DAUGHT",
+            "K-CHACKO",
+            "B-YEARTE",
+            "E-ROSENFELD",
+            "T-LOUDIN",
+            "D-GRANUTH",
+            "D-BUCHANAN",
+            "R-ESPOSITO",
+            "S-WATSON",
+            "T-WATSON",
+            "N-LAZO",
+            "M-SOMMER",
+            "S-BOUCHARD",
+            "E-BILLINGS",
+            "P-LIOTINO",
+            "S-WESTON",
+            "J-WESTON",
+            "E-PACE",
+            "N-DREHMEL",
+            "L-CIRIGLIANO",
+            "B-LANTOS",
+            "A-TRAN",
+            "J-BLAKEMORE",
+            "F-ABRAHAM",
+            "L-YOUNG",
+            "E-WHITTINGTON",
+            "D-WHITTINGTON",
+            "M-MUNOZ",
+            "M-ATTWATER",
+            "E-WINSIOWSKI",
+            "C-MARELLO",
+            "D-GALLEMORE",
+          ]
+        }
+      ]
+      
+      const inMemoriam = new Set([
+        'D-MAIN', 
+        'Y-YAMADA', 
+        'K-KEUHNE'
+        ]);
+      
+     
+            nafu_data.forEach(function (item) {
+            var rankItem = document.createElement('div');
+            rankItem.draggable = true;
+            rankItem.id = item.label;
+            rankItem.className = item.rank + " nafuda";
+            rankItem.innerText = item.label;
+            document.getElementById("nafu").appendChild(rankItem);
+            item.members.forEach(function (member) {
+              var offset1 = Math.floor(Math.random()*100).toString();
+              var offset2 = Math.floor(Math.random()*100).toString();
+              var memberItem = document.createElement('div');
+              memberItem.draggable = true;
+              memberItem.className = "nafuda student";
+              if (inMemoriam.has(member)) {
+                  memberItem.classList.add('inmem');
+              }
+              else {
+                  memberItem.style.backgroundPosition = `${offset1}% ${offset2}%`;
+              }
+              memberItem.innerText = member;
+              document.getElementById("nafu").appendChild(memberItem);
+              })
+            });
       }
-      renderHTML();
-    </script>
-  </div>
+          renderHTML();
+        </script>
 </body>
 
 </html>
