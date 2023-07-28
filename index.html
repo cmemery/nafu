@@ -7,25 +7,24 @@
   <title>AoC Nafu</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/normalize.css">
+
+
+<!-- These are the styles for the nafudakake page. On the aoc website, this is
+    put in the CSS tab under "Layout CSS / JavaScript" in Builder.
+    The opening and closing style tags should be removed when adding it in WP:
+    <style>
+    </style>
+    -->
   <style>
 
-    .nafu {
+    #nafu {
       display: grid;
       margin:0px auto;
       grid-gap:30px 4px;
       max-width:1120px;
       grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
       grid-template-rows: auto,300;
-       
+
    }
 
     .nafuda {
@@ -47,11 +46,11 @@
     .student {
       background: url('https://aikidoofcharlotte.com/wp-content/uploads/2023/03/wood-e1679743219152.jpg') repeat-x 0 0 scroll, #d2b48c;
     }
-    
+
     .student.inmem {
-  
+
         background: linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0))0 80%/100% 10px no-repeat, url('https://aikidoofcharlotte.com//wp-content/uploads/2023/03/wood-e1679743219152.jpg'),#d2b48c;
-        
+
     }
 
     .dan {
@@ -77,15 +76,26 @@
   </style>
 
 
-  
+
 </head>
 <body>
   <div id="content">
     <h1>Nafudakake</h1>
     <p>Our Dojo Rank Board showing lineage from Hombu Dojo, Tokyo, Japan to the United States Aikido
       Federation Technical Commitee.</p>
+    <!-- Ignore content above this line when uploading the nafudakake to WP -->
 
-      <div id="nafu" class="nafu"></div>
+    <!-- Here begins the html component of the nafudakake -->
+      <div id="nafu"></div>
+    <!-- End HTML content for nafudakake -->
+
+    <!-- Here begins the javascript and member list for the nafudakake. On the aoc website, this is
+    put in the JavaScript tab under "Layout CSS / JavaScript" in Builder.
+    The following opening and closing script tags should be removed when adding it in WP:
+    <script id="member_data" type="application/javascript">
+     </script>
+     -->
+
       <script id="member_data" type="application/javascript">
         function renderHTML() {
         const nafu_data = [
@@ -328,14 +338,14 @@
           ]
         }
       ]
-      
+
       const inMemoriam = new Set([
-        'D-MAIN', 
-        'Y-YAMADA', 
+        'D-MAIN',
+        'Y-YAMADA',
         'K-KEUHNE'
         ]);
-      
-     
+
+
             nafu_data.forEach(function (item) {
             var rankItem = document.createElement('div');
             rankItem.draggable = true;
@@ -364,6 +374,8 @@
       }
           renderHTML();
         </script>
+    <!-- End scripting for the nafudakake -->
+  </div>
 </body>
 
 </html>
