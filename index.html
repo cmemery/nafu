@@ -17,13 +17,17 @@
     -->
   <style>
 
-    #nafu {
+    #nafu_container {
+      max-width:1250px;
+      margin: 0px auto;
+    }
+    .nafu {
       display: grid;
-      margin:0px auto;
+      margin:0px auto 30px;
       grid-gap:30px 4px;
-      max-width:1120px;
+      max-width:100%;
       grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
-      grid-template-rows: auto,300;
+      grid-template-rows: none;
 
    }
 
@@ -65,7 +69,7 @@
     #content {
       text-align:center;
       font-family: Arial, sans-serif;
-      max-width: 970px;
+      max-width: 100%;
       margin: 0px auto;
       padding: 0px 30px;
     }
@@ -86,7 +90,11 @@
     <!-- Ignore content above this line when uploading the nafudakake to WP -->
 
     <!-- Here begins the html component of the nafudakake -->
-      <div id="nafu"></div>
+      <div id="nafu_container">
+        <div id="nafu_dan" class="nafu"></div>
+        <div id="nafu_kyu" class="nafu"></div>
+      </div>
+
     <!-- End HTML content for nafudakake -->
 
     <!-- Here begins the javascript and member list for the nafudakake. On the aoc website, this is
@@ -352,7 +360,12 @@
             rankItem.id = item.label;
             rankItem.className = item.rank + " nafuda";
             rankItem.innerText = item.label;
-            document.getElementById("nafu").appendChild(rankItem);
+            if (item.rank == 'dan') {
+              document.getElementById("nafu_dan").appendChild(rankItem);
+            }
+            else {
+              document.getElementById("nafu_kyu").appendChild(rankItem);
+            }
             item.members.forEach(function (member) {
               var offset1 = Math.floor(Math.random()*100).toString();
               var offset2 = Math.floor(Math.random()*100).toString();
@@ -368,7 +381,12 @@
                   memberItem.style.backgroundPosition = `${offset1}% ${offset2}%`;
               }
               memberItem.innerText = member;
-              document.getElementById("nafu").appendChild(memberItem);
+              if (item.rank == 'dan') {
+                document.getElementById("nafu_dan").appendChild(memberItem);
+              }
+              else {
+                document.getElementById("nafu_kyu").appendChild(memberItem);
+              }
               })
             });
       }
